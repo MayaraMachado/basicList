@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/index.css' %}" />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listas</title>
+</head>
+
+<body style="background-color: #ef9a9a ; background: url('{% static 'imgs/background.jpg' %}');">
+    <div class="row">
+
+        <div class="col s12">
+            <div class="col s12 m4 l8" style="background-color: #fff  ; margin: 10% 20%; padding: 1% 5% 1% 5%">
+                {% if p %}
+                    <h1 style="text-align: center; color: rgb(230,96,69)">Editar item</h1>
+                    <h4 style="text-align: center; color: rgba(230,96,69,20)"> {{ p.nome }}</h4>
+                {% else %}
+                    <h1 style="text-align: center; color: rgb(230,96,69)">Inserir</h1>
+                    <h4 style="text-align: center; color: rgba(230,96,69,20)">Inserir item na lista </h4>
+                {% endif %}
+
+                <div class="row">
+                    <form method='POST'>{% csrf_token %} {{form}}
+                        <button class="btn-floating btn-large waves-effect waves-light red" type='submit'>
+                            <i class="material-icons">arrow_forward</i>
+                            Pesquisar
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+</body>
+
+</html>
